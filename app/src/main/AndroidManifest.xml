@@ -9,13 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DigEat">
-        <activity android:name=".MainActivity">
+        <activity android:name=".partner.PartnerProfilePage"></activity>
+        <activity android:name=".partner.PartnerShowQRPage" />
+        <activity android:name=".partner.PartnerAnalyticsPage" />
+        <activity android:name=".customer.CustomerProfilePage" />
+        <activity android:name=".customer.CustomerMenuPage" />
+        <activity android:name=".customer.CustomerOrderPage" />
+        <activity android:name=".partner.PartnerHomePage" />
+        <activity android:name=".customer.CustomerHomePage" />
+        <activity android:name=".RegisterPage" />
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginPage" />
     </application>
 
 </manifest>
