@@ -11,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.budiyev.android.codescanner.AutoFocusMode;
@@ -25,6 +26,7 @@ import com.google.zxing.Result;
 public class CustomerQRScan extends AppCompatActivity {
 
     CodeScanner codeScanner;
+    Button takeOrder;
     Intent movePage;
 
     @Override
@@ -42,6 +44,14 @@ public class CustomerQRScan extends AppCompatActivity {
                 codeScanner.startPreview();
             }
         });
+        takeOrder = findViewById(R.id.takeOrder);
+        takeOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                movePage = new Intent(view.getContext(), CustomerOrderingPage.class);
+                startActivity(movePage);
+            }
+        });
     }
 
     private void setCodeScanner(){
@@ -57,9 +67,7 @@ public class CustomerQRScan extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if (result.getText() == "AllowOrder"){
-                            movePage = new Intent(CustomerQRScan.this, CustomerOrderingPage.class);
-                        }
+                        validate(result.getText());
                     }
                 });
             }
@@ -75,6 +83,15 @@ public class CustomerQRScan extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private void validate(String data) {
+        if (data.equals("AllowOrder")){
+            takeOrder.setVisibility(View.VISIBLE);
+        }
+        else {
+            Toast.makeText(this, "Wrong QR", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
