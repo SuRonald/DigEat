@@ -17,8 +17,9 @@ public class CustomerOrderingPage extends AppCompatActivity implements View.OnCl
     ImageView backBtn;
     CardView deductBtnP1, deductBtnP2, deductBtnP3, deductBtnP4;
     CardView addBtnP1, addBtnP2, addBtnP3, addBtnP4;
-    TextView countP1, countP2, countP3, countP4, totalPrice;
-    Button orderBtn;
+    CardView lightHouse, confirmDialog;
+    TextView countP1, countP2, countP3, countP4, totalPrice, errMsg;
+    Button orderBtn, okBtn;
     Intent movePage;
     int[] prices = {25000, 6000, 8000, 6500};
     int[] qnty = {0, 0, 0, 0};
@@ -51,10 +52,15 @@ public class CustomerOrderingPage extends AppCompatActivity implements View.OnCl
         countP2 = findViewById(R.id.countP2);
         countP3 = findViewById(R.id.countP3);
         countP4 = findViewById(R.id.countP4);
+        errMsg = findViewById(R.id.errMsg);
         totalPrice = findViewById(R.id.totalPrice);
         totalPrice.setText("Rp. 0");
         orderBtn = findViewById(R.id.orderBtn);
         orderBtn.setOnClickListener(this);
+        lightHouse = findViewById(R.id.lightHouse);
+        confirmDialog = findViewById(R.id.confirmDialog);
+        okBtn = findViewById(R.id.okBtn);
+        okBtn.setOnClickListener(this);
     }
 
     @Override
@@ -112,6 +118,16 @@ public class CustomerOrderingPage extends AppCompatActivity implements View.OnCl
             countP4.setText("" + qnty[3]);
         }
         else if (view.getId() == R.id.orderBtn){
+            if (ttlPrice == 0){
+                errMsg.setText("Please at least order something! :)");
+            }
+            else {
+                errMsg.setText("");
+                lightHouse.setVisibility(View.VISIBLE);
+                confirmDialog.setVisibility(View.VISIBLE);
+            }
+        }
+        else if (view.getId() == R.id.okBtn){
             // Masukin transaction
             movePage = new Intent(this, CustomerHomePage.class);
             startActivity(movePage);
