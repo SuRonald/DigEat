@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.digeat">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DigEat">
+        <activity android:name=".customer.CustomerOrderingPage"></activity>
+        <activity android:name=".customer.CustomerQRScan" />
         <activity android:name=".partner.PartnerProfilePage" />
         <activity android:name=".partner.PartnerShowQRPage" />
         <activity android:name=".partner.PartnerAnalyticsPage" />
@@ -16,7 +21,8 @@
         <activity android:name=".customer.CustomerMenuPage" />
         <activity android:name=".customer.CustomerOrderPage" />
         <activity android:name=".partner.PartnerHomePage" />
-        <activity android:name=".customer.CustomerHomePage"
+        <activity
+            android:name=".customer.CustomerHomePage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,10 +31,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterPage" />
-        <activity
-            android:name=".SplashScreen">
-
-        </activity>
+        <activity android:name=".SplashScreen" />
         <activity android:name=".LoginPage" />
     </application>
 
