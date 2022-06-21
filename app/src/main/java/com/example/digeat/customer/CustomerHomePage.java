@@ -10,9 +10,11 @@ import android.view.MenuItem;
 import com.example.digeat.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import me.ibrahimsn.lib.SmoothBottomBar;
+
 public class CustomerHomePage extends AppCompatActivity {
 
-    BottomNavigationView bottomNavigationView;
+    SmoothBottomBar bottomNavigationView;
     Intent movePage;
 
     @Override
@@ -21,26 +23,24 @@ public class CustomerHomePage extends AppCompatActivity {
         setContentView(R.layout.activity_customer_home_page);
 
         bottomNavigationView = findViewById(R.id.bottomNavbar);
-        Menu menu = bottomNavigationView.getMenu();
-        menu.getItem(0).setChecked(true);
         bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()){
-                case R.id.home:
+            switch (item){
+                case 0:
                     movePage = new Intent(this, CustomerHomePage.class);
                     startActivity(movePage);
                     break;
 
-                case R.id.order:
+                case 1:
                     movePage = new Intent(this, CustomerOrderPage.class);
                     startActivity(movePage);
                     break;
 
-                case R.id.menu:
+                case 2:
                     movePage = new Intent(this, CustomerMenuPage.class);
                     startActivity(movePage);
                     break;
 
-                case R.id.profile:
+                case 3:
                     movePage = new Intent(this, CustomerProfilePage.class);
                     startActivity(movePage);
                     break;

@@ -41,29 +41,50 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="#4B2489"
-            app:cardCornerRadius="10dp">
+
+            app:cardCornerRadius="15dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="10dp">
+                android:layout_margin="15dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
                     android:text="E-Wallet"
-                    android:textSize="20dp"
+                    android:textStyle="bold"
                     android:textColor="@color/white"/>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:textSize="40dp"
-                    android:text="Rp. 80000"
-                    android:layout_marginBottom="10dp"/>
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="13dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:layout_gravity="top"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:text="80000"
+                        android:layout_marginLeft="5dp"/>
+
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -97,7 +118,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="20dp"
+            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <TextView
@@ -105,6 +126,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"
                 android:text="Recommended"/>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -124,56 +147,38 @@
                 android:layout_height="wrap_content"
                 android:textSize="20dp"
                 android:textColor="@color/black"
+                android:textStyle="bold"
                 android:text="Food Stalls Nearby"/>
 
             <TextView
                 android:id="@+id/viewMap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
+                android:textSize="12sp"
                 android:textColor="@color/bold_orange"
+                android:layout_centerVertical="true"
                 android:text="View Map"
                 android:layout_alignParentRight="true"/>
 
         </RelativeLayout>
 
-        <androidx.cardview.widget.CardView
+        <Button
             android:id="@+id/orderBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            app:cardBackgroundColor="@color/bold_orange"
-            app:cardCornerRadius="10dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/spoonfork"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Order Now"
-                    android:layout_gravity="center_vertical"
-                    android:textSize="20dp"
-                    android:textColor="@color/white"/>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+            android:background="@drawable/layout_button"
+            android:elevation="20dp"
+            android:drawableLeft="@drawable/spoonfork"
+            android:drawablePadding="8dp"
+            android:text="Order Now"
+            android:layout_gravity="center_horizontal"/>
 
     </LinearLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <me.ibrahimsn.lib.SmoothBottomBar
         android:id="@+id/bottomNavbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_alignParentBottom="true"
         app:menu="@menu/customer_menu"/>
 
