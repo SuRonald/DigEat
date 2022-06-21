@@ -7,7 +7,14 @@ import android.os.Bundle;
 import android.view.Menu;
 
 import com.example.digeat.R;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 public class PartnerAnalyticsPage extends AppCompatActivity {
 
@@ -18,6 +25,24 @@ public class PartnerAnalyticsPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partner_analytics_page);
+
+        PieChart pieChart = findViewById(R.id.pieChart);
+        ArrayList foodParam = new ArrayList();
+        foodParam.add(new Entry(1, 0));
+        foodParam.add(new Entry(2, 1));
+        foodParam.add(new Entry(3, 2));
+        foodParam.add(new Entry(4, 3));
+        PieDataSet dataSet = new PieDataSet(foodParam, "");
+
+        ArrayList foodName = new ArrayList();
+        foodName.add("Nasi Uduk");
+        foodName.add("Ayam Goreng");
+        foodName.add("Sayur Asem");
+        foodName.add("Ikan Pepes");
+        PieData data = new PieData(foodName, dataSet);
+        pieChart.setData(data);
+        dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        pieChart.animateXY(3000, 3000);
 
         bottomNavigationView = findViewById(R.id.bottomNavbar);
         Menu menu = bottomNavigationView.getMenu();
