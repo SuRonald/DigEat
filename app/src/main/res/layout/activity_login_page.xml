@@ -31,33 +31,66 @@
         android:fontFamily="@font/opensans_bold"
         android:textColor="@color/black"
         android:textSize="20dp"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginBottom="48dp"/>
 
-    <EditText
-        android:id="@+id/inputEmail"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/opensans_regular"
-        android:textColor="@color/black"
-        android:hint="Email Address"
-        android:inputType="textEmailAddress" />
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="16dp"
+        android:background="@drawable/form_box">
 
-    <EditText
-        android:id="@+id/inputPassword"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_person"
+            android:layout_marginRight="16dp"/>
+
+        <EditText
+            android:id="@+id/inputEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/opensans_regular"
+            android:textColor="@color/black"
+            android:hint="Email Address"
+            android:background="@null"
+            android:inputType="textEmailAddress" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/opensans_regular"
-        android:textColor="@color/black"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:layout_marginTop="20dp"/>
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="16dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/form_box">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/lock"
+            android:layout_marginRight="16dp"/>
+
+        <EditText
+            android:id="@+id/inputPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/opensans_regular"
+            android:textColor="@color/black"
+            android:hint="Password"
+            android:background="@null"
+            android:inputType="textPassword"/>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/loginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
-        android:textSize="20dp"
         android:fontFamily="@font/opensans_bold"
         android:layout_marginTop="30dp"/>
 
