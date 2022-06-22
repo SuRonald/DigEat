@@ -5,23 +5,32 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.digeat.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import static com.example.digeat.databases.DataVault.currentUser;
+
 public class CustomerHomePage extends AppCompatActivity implements View.OnClickListener {
 
     BottomNavigationView bottomNavigationView;
     Intent movePage;
     Button orderBtn;
+    TextView viewMap, userWallet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_home_page);
 
+        userWallet = findViewById(R.id.userWallet);
+        userWallet.setText("" + currentUser.getUserWallet());
+
+        viewMap = findViewById(R.id.viewMap);
+        viewMap.setOnClickListener(this);
         orderBtn = findViewById(R.id.orderBtn);
         orderBtn.setOnClickListener(this);
 
@@ -58,6 +67,10 @@ public class CustomerHomePage extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         if (view.getId() ==  R.id.orderBtn){
             movePage = new Intent(this, CustomerQRScan.class);
+            startActivity(movePage);
+        }
+        else if (view.getId() == R.id.viewMap){
+            movePage = new Intent(this, CustomerMapPage.class);
             startActivity(movePage);
         }
     }

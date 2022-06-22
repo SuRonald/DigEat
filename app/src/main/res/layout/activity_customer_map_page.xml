@@ -47,6 +47,15 @@
                     android:textSize="20dp"
                     android:textColor="@color/black"/>
 
+                <TextView
+                    android:id="@+id/findPlace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="Find Place!"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"/>
+
             </RelativeLayout>
 
             <androidx.recyclerview.widget.RecyclerView
