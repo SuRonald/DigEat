@@ -1,8 +1,5 @@
 package com.example.digeat.customer;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +7,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
 import com.example.digeat.R;
+import com.example.digeat.helper.TransactionHelper;
+import com.example.digeat.model.Transactions;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import static com.example.digeat.databases.DataVault.currentUser;
 
 public class CustomerOrderingPage extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,6 +31,9 @@ public class CustomerOrderingPage extends AppCompatActivity implements View.OnCl
     int[] prices = {25000, 6000, 8000, 6500};
     int[] qnty = {0, 0, 0, 0};
     int ttlPrice = 0;
+
+    TransactionHelper transactionHelper;
+    Calendar calendar; SimpleDateFormat dateFormat; String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +139,13 @@ public class CustomerOrderingPage extends AppCompatActivity implements View.OnCl
         }
         else if (view.getId() == R.id.okBtn){
             // Masukin transaction
+            calendar = calendar.getInstance();
+            dateFormat = new SimpleDateFormat("d MMM yyyy");
+            date = dateFormat.format(calendar.getTime());
+
+            Transactions transactions = new Transactions(currentUser.getUserId(), ttlPrice, date);
+            transactionHelper = new TransactionHelper(this);
+            transactionHelper.dbTransactionInsert(transactions);
             movePage = new Intent(this, CustomerHomePage.class);
             startActivity(movePage);
         }

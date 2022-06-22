@@ -11,6 +11,12 @@ public class Transactions {
         this.transactionDate = transactionDate;
     }
 
+    public Transactions(Integer customerId, Integer totalPrice, String transactionDate) {
+        this.customerId = customerId;
+        this.totalPrice = totalPrice;
+        this.transactionDate = transactionDate;
+    }
+
     public Integer getTransactionId() {
         return transactionId;
     }
