@@ -12,11 +12,9 @@ import android.widget.Button;
 import com.example.digeat.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import me.ibrahimsn.lib.SmoothBottomBar;
-
 public class CustomerHomePage extends AppCompatActivity implements View.OnClickListener {
 
-    SmoothBottomBar bottomNavigationView;
+    BottomNavigationView bottomNavigationView;
     Intent movePage;
     Button orderBtn;
 
@@ -29,24 +27,26 @@ public class CustomerHomePage extends AppCompatActivity implements View.OnClickL
         orderBtn.setOnClickListener(this);
 
         bottomNavigationView = findViewById(R.id.bottomNavbar);
+        Menu menu = bottomNavigationView.getMenu();
+        menu.getItem(0).setChecked(true);
         bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (item){
-                case 0:
+            switch (item.getItemId()){
+                case R.id.home:
                     movePage = new Intent(this, CustomerHomePage.class);
                     startActivity(movePage);
                     break;
 
-                case 1:
+                case R.id.order:
                     movePage = new Intent(this, CustomerOrderPage.class);
                     startActivity(movePage);
                     break;
 
-                case 2:
+                case R.id.menu:
                     movePage = new Intent(this, CustomerMenuPage.class);
                     startActivity(movePage);
                     break;
 
-                case 3:
+                case R.id.profile:
                     movePage = new Intent(this, CustomerProfilePage.class);
                     startActivity(movePage);
                     break;
