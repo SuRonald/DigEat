@@ -28,6 +28,7 @@ public class FoodHelper {
         contentValues.put("FoodName", food.getFoodName());
         contentValues.put("FoodPrice", food.getFoodPrice());
         contentValues.put("FoodImage", food.getFoodImg());
+        contentValues.put("FoodSales", food.getFoodSales());
 
         db.insert(TABLE_NAME, null, contentValues);
         db.close();

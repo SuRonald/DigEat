@@ -2,6 +2,7 @@ package com.example.digeat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -10,7 +11,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.digeat.customer.CustomerHomePage;
+import com.example.digeat.helper.FoodHelper;
 import com.example.digeat.helper.UserHelper;
+import com.example.digeat.model.Food;
 import com.example.digeat.model.User;
 import com.example.digeat.partner.PartnerHomePage;
 
@@ -23,6 +26,8 @@ public class LoginPage extends AppCompatActivity {
     Button loginBtn;
 
     UserHelper userHelper;
+    FoodHelper foodHelper = new FoodHelper(this);
+    Food food;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,19 @@ public class LoginPage extends AppCompatActivity {
         setContentView(R.layout.activity_login_page);
 
         init();
+
+        Log.d("Check", "" + foodHelper.dbFoodCount());
+        if (foodHelper.dbFoodCount() == 0){
+            food = new Food(R.drawable.nasi_uduk, "Nasi Uduk", 25000, 1, 0);
+            foodHelper.dbFoodInsert(food);
+            food = new Food(R.drawable.ayam_goreng, "Ayam Goreng", 6000, 2, 0);
+            foodHelper.dbFoodInsert(food);
+            food = new Food(R.drawable.sayur_asem, "Sayur Asem", 5000, 3, 0);
+            foodHelper.dbFoodInsert(food);
+            food = new Food(R.drawable.ikan_pepes, "Ikan Pepes", 6500, 4, 0);
+            foodHelper.dbFoodInsert(food);
+            Log.d("Check", "" + foodHelper.dbFoodCount());
+        }
 
         userHelper = new UserHelper(this);
 

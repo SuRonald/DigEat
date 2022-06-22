@@ -1,6 +1,8 @@
 package com.example.digeat.customer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,17 +10,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.digeat.R;
+import com.example.digeat.helper.TransactionHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import static com.example.digeat.databases.DataVault.currentUser;
 
 public class CustomerOrderPage extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     Intent movePage;
+    TransactionHelper THelper = new TransactionHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_order_page);
+
+        RecyclerView orderRV = findViewById(R.id.orderRV);
+        CustomerOrderAdapter customerOrderAdapter = new CustomerOrderAdapter(this);
+        customerOrderAdapter.setTransactions(THelper.dbTransactionRead(currentUser));
+        orderRV.setAdapter(customerOrderAdapter);
+        orderRV.setLayoutManager(new GridLayoutManager(this, 1));
 
         bottomNavigationView = findViewById(R.id.bottomNavbar);
         Menu menu = bottomNavigationView.getMenu();

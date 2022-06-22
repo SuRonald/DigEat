@@ -9,9 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.digeat.helper.FoodHelper;
 import com.example.digeat.helper.UserHelper;
-import com.example.digeat.model.Food;
 import com.example.digeat.model.User;
 
 public class RegisterPage extends AppCompatActivity {
@@ -22,8 +20,7 @@ public class RegisterPage extends AppCompatActivity {
 
     Integer userType = 0, flag = 1;
 
-    Food food;
-    UserHelper userHelper; FoodHelper foodHelper;
+    UserHelper userHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +30,6 @@ public class RegisterPage extends AppCompatActivity {
         init();
 
         userHelper = new UserHelper(this);
-        foodHelper = new FoodHelper(this);
 
         btnBack.setOnClickListener(view -> {
             onBackPressed();
@@ -103,16 +99,6 @@ public class RegisterPage extends AppCompatActivity {
                         Toast.makeText(this, "Please select your role!", Toast.LENGTH_SHORT).show();
                     }
                     else if (userType == 1 || userType == 2) {
-                        foodHelper.dbFoodClear();
-                        food = new Food(R.drawable.nasi_uduk, "Nasi Uduk", 25000, 1, 0);
-                        foodHelper.dbFoodInsert(food);
-                        food = new Food(R.drawable.ayam_goreng, "Ayam Goreng", 6000, 2, 0);
-                        foodHelper.dbFoodInsert(food);
-                        food = new Food(R.drawable.sayur_asem, "Sayur Asem", 5000, 3, 0);
-                        foodHelper.dbFoodInsert(food);
-                        food = new Food(R.drawable.ikan_pepes, "Ikan Pepes", 6500, 4, 0);
-                        foodHelper.dbFoodInsert(food);
-
                         User user = new User(userType, 800000, name, pass, email);
                         userHelper.dbUserInsert(user);
                         Toast.makeText(this, "Register Success!", Toast.LENGTH_SHORT).show();
@@ -120,7 +106,6 @@ public class RegisterPage extends AppCompatActivity {
                     }
                 }
             }
-
         });
 
     }

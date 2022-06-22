@@ -11,11 +11,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.digeat.R;
+import com.example.digeat.helper.FoodHelper;
 import com.example.digeat.helper.TransactionHelper;
+import com.example.digeat.helper.UserHelper;
+import com.example.digeat.model.Food;
 import com.example.digeat.model.Transactions;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Vector;
 
 import static com.example.digeat.databases.DataVault.currentUser;
 
@@ -28,12 +33,15 @@ public class CustomerOrderingPage extends AppCompatActivity implements View.OnCl
     TextView countP1, countP2, countP3, countP4, totalPrice, errMsg;
     Button orderBtn, okBtn;
     Intent movePage;
-    int[] prices = {25000, 6000, 8000, 6500};
+    int[] prices = {25000, 6000, 5000, 6500};
     int[] qnty = {0, 0, 0, 0};
     int ttlPrice = 0;
 
-    TransactionHelper transactionHelper;
-    Calendar calendar; SimpleDateFormat dateFormat; String date;
+    TransactionHelper transactionHelper = new TransactionHelper(this);
+    FoodHelper FHelper = new FoodHelper(this);
+    UserHelper UHelper = new UserHelper(this);
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy");
+    String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,14 +146,16 @@ public class CustomerOrderingPage extends AppCompatActivity implements View.OnCl
             }
         }
         else if (view.getId() == R.id.okBtn){
-            // Masukin transaction
-            calendar = calendar.getInstance();
-            dateFormat = new SimpleDateFormat("d MMM yyyy");
-            date = dateFormat.format(calendar.getTime());
-
+            date = simpleDateFormat.format(new Date());
             Transactions transactions = new Transactions(currentUser.getUserId(), ttlPrice, date);
-            transactionHelper = new TransactionHelper(this);
             transactionHelper.dbTransactionInsert(transactions);
+            Vector<Food> temp = FHelper.dbFoodRead();
+            FHelper.dbAddFoodSales(temp.get(0), qnty[0]);
+            FHelper.dbAddFoodSales(temp.get(1), qnty[1]);
+            FHelper.dbAddFoodSales(temp.get(2), qnty[2]);
+            FHelper.dbAddFoodSales(temp.get(3), qnty[3]);
+            UHelper.dbUpdateWallet(currentUser, ttlPrice);
+            currentUser.setUserWallet(currentUser.getUserWallet() - ttlPrice);
             movePage = new Intent(this, CustomerHomePage.class);
             startActivity(movePage);
         }

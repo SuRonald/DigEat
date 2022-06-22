@@ -13,10 +13,6 @@ public class Food {
         this.foodSales = foodSales;
     }
 
-    public Food(){
-
-    }
-
     public int getFoodImg() {
         return foodImg;
     }

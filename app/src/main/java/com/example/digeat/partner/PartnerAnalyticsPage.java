@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.Menu;
 
 import com.example.digeat.R;
+import com.example.digeat.helper.FoodHelper;
+import com.example.digeat.model.Food;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
@@ -15,23 +17,27 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class PartnerAnalyticsPage extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     Intent movePage;
+    FoodHelper FHelper = new FoodHelper(this);
+    Vector<Food> tempFood = new Vector<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partner_analytics_page);
 
+        tempFood = FHelper.dbFoodRead();
         PieChart pieChart = findViewById(R.id.pieChart);
         ArrayList foodParam = new ArrayList();
-        foodParam.add(new Entry(1, 0));
-        foodParam.add(new Entry(2, 1));
-        foodParam.add(new Entry(3, 2));
-        foodParam.add(new Entry(4, 3));
+        foodParam.add(new Entry(tempFood.get(0).getFoodSales(), 0));
+        foodParam.add(new Entry(tempFood.get(1).getFoodSales(), 1));
+        foodParam.add(new Entry(tempFood.get(2).getFoodSales(), 2));
+        foodParam.add(new Entry(tempFood.get(3).getFoodSales(), 3));
         PieDataSet dataSet = new PieDataSet(foodParam, "");
 
         ArrayList foodName = new ArrayList();
