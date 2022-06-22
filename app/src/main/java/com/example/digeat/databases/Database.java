@@ -26,7 +26,8 @@ public class Database extends SQLiteOpenHelper {
     private final String CREATE_TABLE_FOODS = "CREATE TABLE Food(FoodID INTEGER PRIMARY KEY," +
             "FoodName TEXT not null," +
             "FoodPrice INTEGER not null," +
-            "FoodImage INTEGER not null)";
+            "FoodImage INTEGER not null," +
+            "FoodSales INTEGER not null)";
 
     public Database(@Nullable Context context) {
         super(context, "sqlite", null, 1);
@@ -37,15 +38,6 @@ public class Database extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_TABLE_USERS);
         sqLiteDatabase.execSQL(CREATE_TABLE_TRANSACTIONS);
         sqLiteDatabase.execSQL(CREATE_TABLE_FOODS);
-
-        query = "INSERT INTO Food VALUES(1, 'Nasi Uduk', 25000, R.drawable.nasi_uduk)";
-        sqLiteDatabase.execSQL(query);
-        query = "INSERT INTO Food VALUES(2, 'Ayam Goreng', 6000, R.drawable.ayam_goreng)";
-        sqLiteDatabase.execSQL(query);
-        query = "INSERT INTO Food VALUES(3, 'Sayur Asem', 5000, R.drawable.sayur_asem)";
-        sqLiteDatabase.execSQL(query);
-        query = "INSERT INTO Food VALUES(4, 'kan Pepes', 6500, R.drawable.ikan_pepes)";
-        sqLiteDatabase.execSQL(query);
     }
 
     @Override

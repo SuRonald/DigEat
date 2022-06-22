@@ -40,7 +40,7 @@ public class FoodHelper {
         cursor.moveToFirst();
 
         Vector<Food> temp = new Vector<>();
-        Integer foodId, foodPrice;
+        Integer foodId, foodPrice, foodSales;
         String foodName;
         int foodImg;
 
@@ -50,14 +50,32 @@ public class FoodHelper {
                 foodName = cursor.getString(cursor.getColumnIndexOrThrow("FoodName"));
                 foodPrice = cursor.getInt(cursor.getColumnIndexOrThrow("FoodPrice"));
                 foodImg = cursor.getInt(cursor.getColumnIndexOrThrow("FoodImage"));
+                foodSales = cursor.getInt(cursor.getColumnIndexOrThrow("FoodSales"));
 
-                temp.add(new Food(foodImg, foodName, foodPrice, foodId));
+                temp.add(new Food(foodImg, foodName, foodPrice, foodId, foodSales));
 
                 cursor.moveToNext();
             } while (!cursor.isAfterLast());
         }
         db.close();
         return temp;
+    }
+
+    //update
+    public void dbAddFoodSales(Food food){
+        db = databases.getWritableDatabase();
+        Integer newFoodSales = food.getFoodSales();
+        newFoodSales = newFoodSales + 1;
+        ContentValues cv = new ContentValues();
+        cv.put("FoodSales", newFoodSales);
+        db.update(TABLE_NAME, cv, "FoodID = ?", new String[]{food.getFoodId() + ""});
+        db.close();
+    }
+
+    public void dbFoodClear(){
+        db = databases.getWritableDatabase();
+        db.delete(TABLE_NAME, null, null);
+        db.close();
     }
 
 }

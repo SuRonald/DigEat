@@ -1,7 +1,5 @@
 package com.example.digeat;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -9,10 +7,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.digeat.customer.CustomerHomePage;
 import com.example.digeat.helper.UserHelper;
 import com.example.digeat.model.User;
 import com.example.digeat.partner.PartnerHomePage;
+
+import static com.example.digeat.databases.DataVault.currentUser;
 
 public class LoginPage extends AppCompatActivity {
 
@@ -29,10 +31,11 @@ public class LoginPage extends AppCompatActivity {
 
         init();
 
+        userHelper = new UserHelper(this);
+
         redRegist.setOnClickListener(view -> {
             Intent moveRegist = new Intent(this, RegisterPage.class);
             startActivity(moveRegist);
-            this.finish();
         });
 
         loginBtn.setOnClickListener(view -> {
@@ -57,14 +60,14 @@ public class LoginPage extends AppCompatActivity {
 
                     if (type == 1){
                         Intent goHome = new Intent(this, CustomerHomePage.class);
-                        goHome.putExtra("user", user);
+                        currentUser = user;
                         Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show();
                         this.finish();
                         startActivity(goHome);
                     }
                     else if (type == 2){
                         Intent goHome = new Intent(this, PartnerHomePage.class);
-                        goHome.putExtra("user", user);
+                        currentUser = user;
                         Toast.makeText(this, "Login Successful!", Toast.LENGTH_SHORT).show();
                         this.finish();
                         startActivity(goHome);

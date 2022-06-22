@@ -3,13 +3,14 @@ package com.example.digeat.model;
 public class Food {
     int foodImg;
     String foodName;
-    Integer foodPrice, foodId;
+    Integer foodPrice, foodId, foodSales;
 
-    public Food(int foodImg, String foodName, Integer foodPrice, Integer foodId) {
+    public Food(int foodImg, String foodName, Integer foodPrice, Integer foodId, Integer foodSales) {
         this.foodImg = foodImg;
         this.foodName = foodName;
         this.foodPrice = foodPrice;
         this.foodId = foodId;
+        this.foodSales = foodSales;
     }
 
     public Food(){
@@ -46,5 +47,13 @@ public class Food {
 
     public void setFoodId(Integer foodId) {
         this.foodId = foodId;
+    }
+
+    public Integer getFoodSales() {
+        return foodSales;
+    }
+
+    public void setFoodSales(Integer foodSales) {
+        this.foodSales = foodSales;
     }
 }

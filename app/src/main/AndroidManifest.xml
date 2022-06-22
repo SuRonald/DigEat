@@ -31,7 +31,12 @@
         <activity android:name=".customer.CustomerOrderPage" />
         <activity android:name=".partner.PartnerHomePage" />
         <activity
-            android:name=".customer.CustomerHomePage"
+            android:name=".customer.CustomerHomePage">
+
+        </activity>
+        <activity android:name=".RegisterPage" />
+        <activity android:name=".SplashScreen" />
+        <activity android:name=".LoginPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,9 +44,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterPage" />
-        <activity android:name=".SplashScreen" />
-        <activity android:name=".LoginPage" />
     </application>
 
 </manifest>

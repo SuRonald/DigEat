@@ -1,13 +1,12 @@
 package com.example.digeat.partner;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.digeat.R;
-import com.example.digeat.model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class PartnerHomePage extends AppCompatActivity {
@@ -19,8 +18,6 @@ public class PartnerHomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partner_home_page);
-
-        User user = getIntent().getParcelableExtra("user");
 
         bottomNavigationView = findViewById(R.id.bottomNavbar);
         Menu menu = bottomNavigationView.getMenu();

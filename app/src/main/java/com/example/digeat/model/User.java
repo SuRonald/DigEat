@@ -1,9 +1,6 @@
 package com.example.digeat.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-public class User implements Parcelable {
+public class User{
     Integer userId, userType, userWallet;
     String userName, userPass, userEmail;
 
@@ -18,27 +15,6 @@ public class User implements Parcelable {
     public User (){
 
     }
-
-    protected User(Parcel in) {
-        userId = in.readInt();
-        userType = in.readInt();
-        userWallet = in.readInt();
-        userName = in.readString();
-        userPass = in.readString();
-        userEmail = in.readString();
-    }
-
-    public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
-        @Override
-        public User createFromParcel(Parcel in) {
-            return new User(in);
-        }
-
-        @Override
-        public User[] newArray(int size) {
-            return new User[size];
-        }
-    };
 
     public Integer getUserId() {
         return userId;
@@ -88,18 +64,4 @@ public class User implements Parcelable {
         this.userEmail = userEmail;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(userId);
-        parcel.writeInt(userType);
-        parcel.writeInt(userWallet);
-        parcel.writeString(userName);
-        parcel.writeString(userPass);
-        parcel.writeString(userEmail);
-    }
 }

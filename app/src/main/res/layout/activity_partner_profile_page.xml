@@ -248,6 +248,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Logout"
+            android:background="@drawable/layout_button"
+            android:paddingHorizontal="24dp"
             android:fontFamily="@font/opensans_bold"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="32dp"/>
