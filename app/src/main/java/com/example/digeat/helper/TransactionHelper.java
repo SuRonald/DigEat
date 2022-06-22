@@ -58,4 +58,21 @@ public class TransactionHelper {
         db.close();
         return temp;
     }
+
+    public int takeIncome(String date){
+        db = databases.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM Transactions WHERE Date LIKE ?", new String[]{date});
+        cursor.moveToFirst();
+
+        int temp = 0;
+
+        if (cursor != null && cursor.getCount() > 0){
+            do {
+                temp = temp + cursor.getInt(cursor.getColumnIndexOrThrow("TotalPrice"));
+                cursor.moveToNext();
+            } while (!cursor.isAfterLast());
+        }
+        db.close();
+        return temp;
+    }
 }

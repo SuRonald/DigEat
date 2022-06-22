@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DigEat</string>
+    <string name="title_activity_customer_map_page">Map</string>
 </resources>
