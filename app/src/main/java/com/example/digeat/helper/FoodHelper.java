@@ -62,16 +62,27 @@ public class FoodHelper {
     }
 
     //update
-    public void dbAddFoodSales(Food food){
+    public void dbAddFoodSales(Food food, Integer quantity){
         db = databases.getWritableDatabase();
         Integer newFoodSales = food.getFoodSales();
-        newFoodSales = newFoodSales + 1;
+        newFoodSales = newFoodSales + quantity;
         ContentValues cv = new ContentValues();
         cv.put("FoodSales", newFoodSales);
         db.update(TABLE_NAME, cv, "FoodID = ?", new String[]{food.getFoodId() + ""});
         db.close();
     }
 
+    //count
+    public Integer dbFoodCount(){
+        db = databases.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM Food", null);
+        Integer total = cursor.getCount();
+        cursor.close();
+        db.close();
+        return total;
+    }
+
+    //clear
     public void dbFoodClear(){
         db = databases.getWritableDatabase();
         db.delete(TABLE_NAME, null, null);

@@ -53,4 +53,17 @@ public class UserHelper {
         return user;
     }
 
+    //updateWallet
+    public void dbUpdateWallet(User user, Integer payment){
+        db = databases.getWritableDatabase();
+        Integer wallet = user.getUserWallet() - payment;
+        if (wallet < 0){
+            wallet = 0;
+        }
+        ContentValues cv = new ContentValues();
+        cv.put("UserWallet", wallet);
+        db.update(TABLE_NAME, cv, "UserID = ?", new String[]{user.getUserId().toString()});
+        db.close();
+    }
+
 }
