@@ -7,10 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 
 import com.example.digeat.R;
-import com.example.digeat.customer.CustomerHomePage;
-import com.example.digeat.customer.CustomerMenuPage;
-import com.example.digeat.customer.CustomerOrderPage;
-import com.example.digeat.customer.CustomerProfilePage;
+import com.example.digeat.model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class PartnerHomePage extends AppCompatActivity {
@@ -22,6 +19,8 @@ public class PartnerHomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partner_home_page);
+
+        User user = getIntent().getParcelableExtra("user");
 
         bottomNavigationView = findViewById(R.id.bottomNavbar);
         Menu menu = bottomNavigationView.getMenu();

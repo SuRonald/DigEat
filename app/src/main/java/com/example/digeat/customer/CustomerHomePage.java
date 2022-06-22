@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.digeat.R;
+import com.example.digeat.model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class CustomerHomePage extends AppCompatActivity implements View.OnClickListener {
@@ -22,6 +23,8 @@ public class CustomerHomePage extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_home_page);
+
+        User user = getIntent().getParcelableExtra("user");
 
         orderBtn = findViewById(R.id.orderBtn);
         orderBtn.setOnClickListener(this);
