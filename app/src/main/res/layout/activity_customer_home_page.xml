@@ -131,10 +131,180 @@
                 android:layout_marginBottom="8dp"
                 android:text="Recommended"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvRecommend"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/rvRecommend"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"/>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="96dp"
+                        android:layout_height="104dp"
+                        android:elevation="2dp"
+                        android:layout_marginTop="8dp"
+                        app:cardCornerRadius="16dp">
+
+                        <LinearLayout
+                            android:layout_width="96dp"
+                            android:layout_height="104dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="72dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/sayur_asem"
+                                android:layout_gravity="center"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Sayur Asem"
+                                android:fontFamily="@font/opensans_bold"
+                                android:textColor="@color/black"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rp 5.000"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="6dp"/>
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="96dp"
+                        android:layout_height="104dp"
+                        android:elevation="2dp"
+                        android:layout_marginTop="8dp"
+                        app:cardCornerRadius="16dp"
+                        android:layout_marginLeft="16dp">
+
+                        <LinearLayout
+                            android:layout_width="96dp"
+                            android:layout_height="104dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="72dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/ayam_goreng"
+                                android:layout_gravity="center"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ayam Goreng"
+                                android:fontFamily="@font/opensans_bold"
+                                android:textColor="@color/black"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rp 6.000"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="6dp"/>
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="96dp"
+                        android:layout_height="104dp"
+                        android:elevation="2dp"
+                        android:layout_marginTop="8dp"
+                        app:cardCornerRadius="16dp"
+                        android:layout_marginLeft="16dp">
+
+                        <LinearLayout
+                            android:layout_width="96dp"
+                            android:layout_height="104dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="72dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/nasi_uduk"
+                                android:layout_gravity="center"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Nasi Uduk"
+                                android:fontFamily="@font/opensans_bold"
+                                android:textColor="@color/black"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rp 25.000"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="6dp"/>
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="96dp"
+                        android:layout_height="104dp"
+                        android:elevation="2dp"
+                        android:layout_marginTop="8dp"
+                        app:cardCornerRadius="16dp"
+                        android:layout_marginLeft="16dp">
+
+                        <LinearLayout
+                            android:layout_width="96dp"
+                            android:layout_height="104dp"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="72dp"
+                                android:layout_height="48dp"
+                                android:src="@drawable/ikan_pepes"
+                                android:layout_gravity="center"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ikan Pepes"
+                                android:fontFamily="@font/opensans_bold"
+                                android:textColor="@color/black"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rp 6.500"
+                                android:layout_gravity="center"
+                                android:layout_marginBottom="6dp"/>
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
