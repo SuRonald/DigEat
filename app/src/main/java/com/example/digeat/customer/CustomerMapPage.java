@@ -1,48 +1,25 @@
 package com.example.digeat.customer;
 
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.FragmentActivity;
-
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.FragmentActivity;
+
 import com.example.digeat.R;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
 
 public class CustomerMapPage extends FragmentActivity {
 
+    ImageView btnBack;
     BottomNavigationView bottomNavigationView;
     Intent movePage;
     TextView findPlace;
@@ -72,6 +49,11 @@ public class CustomerMapPage extends FragmentActivity {
 //                new PlaceTask().execute(url);
 //            }
 //        });
+
+        btnBack = findViewById(R.id.backBtn);
+        btnBack.setOnClickListener(view -> {
+            onBackPressed();
+        });
 
         bottomNavigationView = findViewById(R.id.bottomNavbar);
         Menu menu = bottomNavigationView.getMenu();
